@@ -1,4 +1,4 @@
-# Mediatation App
+# Meditation App
 
 A flutter app that make you feel calm, relief, relax, and focus 🧘
 
