@@ -1,6 +1,8 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:meditation_app/src/utils/colors_constant.dart';
 
+import '../utils/dimens_constant.dart';
 import '../utils/utils.dart';
 import '../widgets/circle_play_button.dart';
 import '../widgets/rectangle_button.dart';
@@ -35,21 +37,7 @@ class _SongBoardState extends State<SongBoard> {
     super.initState();
     _updateUI();
     _setAudio();
-
-    /// listen to state playing, paused, stop
-    audioPlayer.onPlayerStateChanged.listen((event) {
-      setState(() => isPlaying = event == PlayerState.playing);
-    });
-
-    /// Listen to duration position
-    audioPlayer.onDurationChanged.listen((newDuration) {
-      setState(() => duration = newDuration);
-    });
-
-    /// listen to audion position
-    audioPlayer.onPositionChanged.listen((newPosition) {
-      setState(() => position = newPosition);
-    });
+    _subscribeToStreams();
   }
 
   void _updateUI() {
@@ -68,32 +56,48 @@ class _SongBoardState extends State<SongBoard> {
     audioPlayer.setSource(source);
   }
 
+  void _subscribeToStreams() {
+    /// listen to state playing, paused, stop
+    audioPlayer.onPlayerStateChanged.listen((event) {
+      setState(() => isPlaying = event == PlayerState.playing);
+    });
+
+    /// Listen to duration position
+    audioPlayer.onDurationChanged.listen((newDuration) {
+      setState(() => duration = newDuration);
+    });
+
+    /// listen to audion position
+    audioPlayer.onPositionChanged.listen((newPosition) {
+      setState(() => position = newPosition);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: EdgeInsets.all(DimensConstant.dimens15),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(DimensConstant.dimens20),
                   child: Image.asset(
                     'assets/images/$imageSource',
                     width: double.infinity,
-                    height: 350,
+                    height: DimensConstant.dimens350,
                     fit: BoxFit.cover,
                   ),
                 ),
-                Text(musicName, style: kLargeTextStyle),
+                Text(musicName, style: largeTextStyle),
                 Slider(
-                  min: 0,
                   max: duration.inSeconds.toDouble(),
                   value: position.inSeconds.toDouble(),
-                  activeColor: Colors.deepPurple,
-                  inactiveColor: Colors.deepPurple[200],
+                  activeColor: ColorsConstant.deepPurple,
+                  inactiveColor: ColorsConstant.deepPurple200,
                   onChanged: (value) async {
                     final position = Duration(seconds: value.toInt());
                     await audioPlayer.seek(position);
@@ -104,13 +108,13 @@ class _SongBoardState extends State<SongBoard> {
                   isPlaying: isPlaying,
                   audioPlayer: audioPlayer,
                 ),
-                const SizedBox(height: 120),
+                SizedBox(height: DimensConstant.dimens120),
                 RectangleButton(
                   onPressed: () async {
                     await audioPlayer.stop();
                     if (context.mounted) Navigator.pop(context);
                   },
-                  child: const Text('GO TO DASHBOARD', style: kButtonTextStyle),
+                  child: Text('GO TO DASHBOARD', style: buttonTextStyle),
                 )
               ],
             ),

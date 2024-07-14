@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import './pages/home.dart';
-import 'theme.dart';
+import 'package:meditation_app/src/screens/home.dart';
+
+import 'src/utils/theme.dart';
 
 void main() => runApp(const App());
 
