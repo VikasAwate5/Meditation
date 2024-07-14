@@ -16,10 +16,10 @@ class CirclePlayButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: kCircleBoxDecoration,
+      decoration: circleBoxDecoration,
       child: Center(
         child: IconButton(
-          icon: isPlaying ? kPlayIcon : kPauseIcon,
+          icon: isPlaying ? playIcon : pauseIcon,
           onPressed: isPlaying ? audioPlayer.pause : audioPlayer.resume,
         ),
       ),

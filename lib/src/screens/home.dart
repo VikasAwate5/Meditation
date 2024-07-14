@@ -1,50 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:meditation_app/pages/dashboard.dart';
-import 'package:meditation_app/widgets/rectangle_button.dart';
+import 'package:meditation_app/src/utils/dimens_constant.dart';
+import 'package:meditation_app/src/widgets/rectangle_button.dart';
 
 import '../utils/utils.dart';
+import 'dashboard.dart';
 
 class Home extends StatelessWidget {
-  const Home({
-    super.key,
-  });
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: EdgeInsets.all(DimensConstant.dimens15),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Image.asset("assets/images/meditation.png"),
-              const Text(
+              Text(
                 "Time to meditate",
-                style: kLargeTextStyle,
+                style: largeTextStyle,
                 textAlign: TextAlign.center,
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 50),
+              Padding(
+                padding: EdgeInsets.only(top: DimensConstant.dimens50),
                 child: Text(
                   "Take a breath,\nand ease your mind",
-                  style: kMediumTextStyle,
+                  style: mediumTextStyle,
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(
-                height: 50,
-              ),
+              SizedBox(height: DimensConstant.dimens50),
               RectangleButton(
                 onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Dashboard(),
-                    )),
-                child: const Text(
+                  context,
+                  MaterialPageRoute(builder: (_) => const Dashboard()),
+                ),
+                child: Text(
                   "Let's get started",
-                  style: kButtonTextStyle,
+                  style: buttonTextStyle,
                 ),
               )
             ],

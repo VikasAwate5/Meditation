@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meditation_app/pages/songboard.dart';
+import 'package:meditation_app/src/screens/song_board.dart';
+import 'package:meditation_app/src/utils/colors_constant.dart';
+import 'package:meditation_app/src/utils/dimens_constant.dart';
 
 import '../utils/assets.dart';
 import '../utils/utils.dart';
@@ -13,133 +15,135 @@ class Dashboard extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: EdgeInsets.all(DimensConstant.dimens15),
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    child: const Icon(
+                    child: Icon(
                       Icons.arrow_back,
-                      size: 30,
-                      color: Colors.deepPurple,
+                      size: DimensConstant.dimens30,
+                      color: ColorsConstant.deepPurple,
                     ),
                     onTap: () => Navigator.pop(context),
                   ),
-                  const Text("Hey Buddy!", style: kLargeTextStyle),
+                  Text("Hey Buddy!", style: largeTextStyle),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 30),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: DimensConstant.dimens30,
+                ),
                 child: Text(
                   "What's your mood today?",
-                  style: kMediumTextStyle,
+                  style: mediumTextStyle,
                 ),
               ),
               Expanded(
                 child: GridView.count(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 30,
+                  crossAxisCount: DimensConstant.dimens2,
+                  mainAxisSpacing: DimensConstant.dimens20,
+                  crossAxisSpacing: DimensConstant.dimens30,
                   children: [
                     MeditationCard(
-                      title: kMeditateTitle,
-                      description: kMeditateSubtitle,
-                      image: kMeditateImageSource,
+                      title: meditateTitle,
+                      description: meditateSubtitle,
+                      image: meditateImageSource,
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const SongBoard(
-                              musicName: kMeditateTitle,
-                              imageSource: kMeditateImageSource,
-                              musicSource: kMeditateMusicSource,
+                              musicName: meditateTitle,
+                              imageSource: meditateImageSource,
+                              musicSource: meditateMusicSource,
                             ),
                           ),
                         );
                       },
                     ),
                     MeditationCard(
-                      title: kRelaxTitle,
-                      description: kRelaxSubtitle,
-                      image: kRelaxImageSource,
+                      title: relaxTitle,
+                      description: relaxSubtitle,
+                      image: relaxImageSource,
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const SongBoard(
-                              musicName: kRelaxTitle,
-                              imageSource: kRelaxImageSource,
-                              musicSource: kRelaxMusicSource,
+                              musicName: relaxTitle,
+                              imageSource: relaxImageSource,
+                              musicSource: relaxMusicSource,
                             ),
                           ),
                         );
                       },
                     ),
                     MeditationCard(
-                      title: kBrainTitle,
-                      description: kBrainSubtitle,
-                      image: kBrainImageSource,
+                      title: brainTitle,
+                      description: brainSubtitle,
+                      image: brainImageSource,
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const SongBoard(
-                              musicName: kBrainTitle,
-                              imageSource: kBrainImageSource,
-                              musicSource: kBrainMusicSource,
+                              musicName: brainTitle,
+                              imageSource: brainImageSource,
+                              musicSource: brainMusicSource,
                             ),
                           ),
                         );
                       },
                     ),
                     MeditationCard(
-                      title: kStudyTitle,
-                      description: kStudySubtitle,
-                      image: kStudyImageSource,
+                      title: studyTitle,
+                      description: studySubtitle,
+                      image: studyImageSource,
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SongBoard(
-                              musicName: kStudyTitle,
-                              imageSource: kStudyImageSource,
-                              musicSource: kStudyMusicSource,
+                            builder: (_) => const SongBoard(
+                              musicName: studyTitle,
+                              imageSource: studyImageSource,
+                              musicSource: studyMusicSource,
                             ),
                           ),
                         );
                       },
                     ),
                     MeditationCard(
-                      title: kSleepTitle,
-                      description: kSleepSubtitle,
-                      image: kSleepImageSource,
+                      title: sleepTitle,
+                      description: sleepSubtitle,
+                      image: sleepImageSource,
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const SongBoard(
-                              musicName: kSleepTitle,
-                              imageSource: kSleepImageSource,
-                              musicSource: kSleepMusicSource,
+                              musicName: sleepTitle,
+                              imageSource: sleepImageSource,
+                              musicSource: sleepMusicSource,
                             ),
                           ),
                         );
                       },
                     ),
                     MeditationCard(
-                      title: kFocusTitle,
-                      description: kFocusSubtitle,
-                      image: kFocusImageSource,
+                      title: focusTitle,
+                      description: focusSubtitle,
+                      image: focusImageSource,
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const SongBoard(
-                              musicName: kFocusTitle,
-                              imageSource: kFocusImageSource,
-                              musicSource: kFocusMusicSource,
+                              musicName: focusTitle,
+                              imageSource: focusImageSource,
+                              musicSource: focusMusicSource,
                             ),
                           ),
                         );
