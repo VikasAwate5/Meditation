@@ -78,7 +78,7 @@ class _SongBoardState extends State<SongBoard> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(DimensConstant.dimens15),
+          padding: const EdgeInsets.all(DimensConstant.dimens15),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -108,13 +108,13 @@ class _SongBoardState extends State<SongBoard> {
                   isPlaying: isPlaying,
                   audioPlayer: audioPlayer,
                 ),
-                SizedBox(height: DimensConstant.dimens120),
+                const SizedBox(height: DimensConstant.dimens120),
                 RectangleButton(
                   onPressed: () async {
                     await audioPlayer.stop();
                     if (context.mounted) Navigator.pop(context);
                   },
-                  child: Text('GO TO DASHBOARD', style: buttonTextStyle),
+                  child: const Text('GO TO DASHBOARD', style: buttonTextStyle),
                 )
               ],
             ),
