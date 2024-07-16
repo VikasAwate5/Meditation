@@ -15,24 +15,24 @@ class Dashboard extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(DimensConstant.dimens15),
+          padding: const EdgeInsets.all(DimensConstant.dimens15),
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_back,
                       size: DimensConstant.dimens30,
                       color: ColorsConstant.deepPurple,
                     ),
                     onTap: () => Navigator.pop(context),
                   ),
-                  Text("Hey Buddy!", style: largeTextStyle),
+                  const Text("Hey Buddy!", style: largeTextStyle),
                 ],
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(
                   vertical: DimensConstant.dimens30,
                 ),
@@ -43,7 +43,7 @@ class Dashboard extends StatelessWidget {
               ),
               Expanded(
                 child: GridView.count(
-                  crossAxisCount: DimensConstant.dimens2,
+                  crossAxisCount: DimensConstant.dimens2.toInt(),
                   mainAxisSpacing: DimensConstant.dimens20,
                   crossAxisSpacing: DimensConstant.dimens30,
                   children: [
